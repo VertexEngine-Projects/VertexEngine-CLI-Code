@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "VertexEngine-CLI"
+version = "1.0"
+description = "An Offical CLI library for VertexEngine."
+authors = [
+  { name = "Tyrel Miguel", email = "annbasilan0828@gmail.com" }
+]
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+
+dependencies = [
+  "pygame>=2.0",
+  "PyQt6>=6.7",
+  "pyinstaller>=6.5.0",
+  "VertexEngine>=1.0.1"
+]
+
+[project.urls]
+Documentation = "https://vertexenginedocs.netlify.app/"
+
+[tool.setuptools.packages.find]
+where = ["src"]
