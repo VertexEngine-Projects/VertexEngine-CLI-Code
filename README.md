@@ -5,6 +5,11 @@ Commands:
 `python -m vertex build [path]` - build an exe with 2 flags:
 `--onefile, --windowed`
 
+### Change Logs (1.1), NEW!
+1.1:
+ - Added 2 new commands!:
+    vertex remove {filepath}
+    vertex upload {flags}
 ## How to install Pyinstaller
 Step 1. Type in:
 pip install pyinstaller

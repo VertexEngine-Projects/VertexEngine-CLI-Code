@@ -43,7 +43,7 @@ TEMPLATES: dict[str, dict[str, str]] = {
                 app.exec()
             """
         ),
-        "README.md": "# VertexEngine Game\n\nGenerated with MiniCLI ✨\n",
+        "README.md": "# VertexEngine Game\n\nGenerated with VertexEngine. ✨\n",
         ".gitignore": "__pycache__/\n.env\n",
    },
 }

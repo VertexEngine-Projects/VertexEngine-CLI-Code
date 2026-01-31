@@ -1,16 +1,68 @@
 # __main__.py
 from pathlib import Path
 import os
-
+import subprocess
 from PyInstaller.__main__ import run as pyinstaller_run
 
 from .minicli import CLI
 from .templates import TEMPLATES
-
+import sys
+import glob
 
 def main():
     cli = CLI()
 
+    # -----------------
+    # Upload
+    # -----------------
+    @cli.command("upload")
+    def upload_package(dist_path="dist/*", username=None, password=None):
+        """
+        Upload a Python package to PyPI using Twine.
+
+        dist_path: glob path to distribution files (default: dist/*)
+        username: PyPI username (optional if stored in .pypirc)
+        password: PyPI password or token (optional if stored in .pypirc)
+        """
+        # Expand wildcards in a cross-platform way
+        files = glob.glob(dist_path)
+        if not files:
+            print(f"❌ No files found at {dist_path}")
+            return
+
+        # Use Python to call Twine (works on Windows, Linux, macOS)
+        command = [sys.executable, "-m", "twine", "upload"] + files
+
+        if username:
+            command += ["-u", username]
+        if password:
+            command += ["-p", password]
+
+        print(f"🚀 Running: {' '.join(command)}")
+        try:
+            subprocess.run(command, check=True)
+            print("✅ Upload complete!")
+        except subprocess.CalledProcessError as e:
+            print(f"❌ Upload failed: {e}")
+
+
+        print(f"🚀 Running: {' '.join(command)}")
+        try:
+            subprocess.run(command, check=True)
+            print("✅ Upload complete!")
+        except subprocess.CalledProcessError as e:
+            print(f"❌ Upload failed: {e}")
+    # -----------------
+    # Remove
+    # -----------------
+    @cli.command("remove")
+    def remove_file(
+        script_path: str
+    ):
+        """Remove a script from your project."""
+        if not os.path.isfile(script_path):
+            raise FileNotFoundError(f"Script not found: {script_path}")
+        os.remove(script_path)
     # ------------------
     # build command
     # ------------------
