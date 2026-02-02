@@ -5,8 +5,11 @@ Commands:
 `python -m vertex build [path]` - build an exe with 2 flags:
 `--onefile, --windowed`
 
-### Change Logs (1.1), NEW!
-1.1:
+## Change Logs (1.2rc2), NEW!
+### 1.2rc2:
+ - Fixed 25 critical crash bugs!
+ - Discord in 10 DAYS!
+### 1.1:
  - Added 2 new commands!:
     vertex remove {filepath}
     vertex upload {flags}
